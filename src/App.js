@@ -15,6 +15,7 @@ import ContextApi from './ContextApi/ContextApi';
 import DashboardDefault from './pages/Dashboard/DashboardDefault/DashboardDefault';
 import UsersPage from './pages/Dashboard/UsersPage/UsersPage';
 import Products from './pages/Dashboard/Products/Products';
+import Register from './pages/LoginReg/Register/Register';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="products" element={<Products/>}/>
       </Route>
       <Route path="/login" element={<Login/>}/>
+      <Route path="/register" element={<Register/>}/>
       <Route path ="*" element={<NotFound/>}/>
       
     </Routes>
