@@ -15,7 +15,7 @@ const Navigation = () => {
   return (
     <>
       <Navbar className="navigation" bg="dark" variant="dark" expand="lg">
-        <Container>
+        {/* <Container> */}
           {/* <Navbar.Brand className="mx-3" href="#home"></Navbar.Brand> */}
           {/* <NavLink id="com" to="/"><b>SoftzinoTechnologies</b></NavLink> */}
           <h4 id="com">SoftzinoTechnologies</h4>
@@ -30,13 +30,9 @@ const Navigation = () => {
               </NavLink>
             </Nav>
           </Navbar.Collapse>
-        </Container>
-      
          
-         
-          <h6  className="text-light">{user.displayName}</h6>
-          
-         
+        {/* </Container> */}
+        <h6  className="text-light">{user.displayName}</h6>
           {user.displayName ? (
             <button className="logoutButton" onClick={userLogout}>
               Logout
@@ -46,6 +42,11 @@ const Navigation = () => {
               Login
             </button>
           )}
+         
+         
+          
+         
+         
         
       </Navbar>
     </>

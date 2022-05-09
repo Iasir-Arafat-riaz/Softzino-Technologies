@@ -4,8 +4,9 @@
  color: aliceblue;
 }
 #com{
-    margin-right: 50px;
+    margin: 0 50px;
     color: rgb(233, 141, 233);
+    
 }
 .navigation button{
     margin-right: 30px;
