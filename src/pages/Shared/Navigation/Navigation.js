@@ -10,7 +10,7 @@ const Navigation = () => {
     navigate("/login");
   };
 
-  const {user,userLogout}=useContextAuth();
+  const { user, userLogout } = useContextAuth();
   console.log(user.displayName);
   return (
     <>
@@ -22,15 +22,31 @@ const Navigation = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <NavLink to="/"><b>Home</b></NavLink>
-              <NavLink to="dashboard"><b>Dashboard</b></NavLink>
+              <NavLink to="/">
+                <b>Home</b>
+              </NavLink>
+              <NavLink to="dashboard">
+                <b>Dashboard</b>
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
-        <p className="text-light">{user.displayName}</p>
-        {user.displayName? <button className="logoutButton" onClick={userLogout}>Logout</button>:<button className="loginButton" onClick={handleLogin}>Login</button>}
+      
+         
+         
+          <h6  className="text-light">{user.displayName}</h6>
+          
+         
+          {user.displayName ? (
+            <button className="logoutButton" onClick={userLogout}>
+              Logout
+            </button>
+          ) : (
+            <button className="loginButton" onClick={handleLogin}>
+              Login
+            </button>
+          )}
         
-       
       </Navbar>
     </>
   );

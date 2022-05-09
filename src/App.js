@@ -12,6 +12,9 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/LoginReg/Login/Login';
 import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
 import ContextApi from './ContextApi/ContextApi';
+import DashboardDefault from './pages/Dashboard/DashboardDefault/DashboardDefault';
+import UsersPage from './pages/Dashboard/UsersPage/UsersPage';
+import Products from './pages/Dashboard/Products/Products';
 
 function App() {
   return (
@@ -22,7 +25,11 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/home' element={<Home/>}/>
-      <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}></Route>
+      <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>}>
+        <Route path="/dashboard" element={<DashboardDefault/>}/>
+        <Route path="usersPage" element={<UsersPage/>}/>
+        <Route path="products" element={<Products/>}/>
+      </Route>
       <Route path="/login" element={<Login/>}/>
       <Route path ="*" element={<NotFound/>}/>
       

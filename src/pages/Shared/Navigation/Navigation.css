@@ -23,3 +23,8 @@
     border: 0px;
     background-color: greenyellow;
 }
+.userName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
