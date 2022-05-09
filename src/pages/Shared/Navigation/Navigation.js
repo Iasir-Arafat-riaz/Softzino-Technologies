@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink, useNavigate } from "react-router-dom";
-import useFirebase from "../../customHooks/useFirebase";
+import useContextAuth from "../../customHooks/useContextAuth";
 import "./Navigation.css";
 
 const Navigation = () => {
@@ -10,7 +10,7 @@ const Navigation = () => {
     navigate("/login");
   };
 
-  const {user,userLogout}=useFirebase();
+  const {user,userLogout}=useContextAuth();
   console.log(user.displayName);
   return (
     <>
@@ -18,18 +18,19 @@ const Navigation = () => {
         <Container>
           {/* <Navbar.Brand className="mx-3" href="#home"></Navbar.Brand> */}
           {/* <NavLink id="com" to="/"><b>SoftzinoTechnologies</b></NavLink> */}
-          <b id="com">SoftzinoTechnologies</b>
+          <h4 id="com">SoftzinoTechnologies</h4>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <NavLink to="/">Home</NavLink>
-              <NavLink to="dashboard">Dashboard</NavLink>
+              <NavLink to="/"><b>Home</b></NavLink>
+              <NavLink to="dashboard"><b>Dashboard</b></NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
         <p className="text-light">{user.displayName}</p>
-        <button onClick={handleLogin}>Login</button>
-        <button onClick={userLogout}>Logout</button>
+        {user.displayName? <button className="logoutButton" onClick={userLogout}>Logout</button>:<button className="loginButton" onClick={handleLogin}>Login</button>}
+        
+       
       </Navbar>
     </>
   );

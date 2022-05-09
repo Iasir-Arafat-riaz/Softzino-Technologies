@@ -10,8 +10,6 @@ import {
   } from "firebase/auth";
 import { useEffect, useState } from "react";
 import firebaseInitialize from "../firebase/Initialize";
-
-
   firebaseInitialize();
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
@@ -20,17 +18,19 @@ const auth = getAuth();
     const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-
-  const googleSignIn = () => {
+const [language,setLanguage]=useState("english");
+  const googleSignIn = (navigate,location) => {
     // setIsLoading(true);
     signInWithPopup(auth, provider)
       .then((result) => {
         setUser(result.user);
+
         // console.log(result.user.displayName);
         //SAVE USER FUNCTION CALL
         // saveUser(user.email,user.displayName,"put")
-
-        setError("")
+ navigate(location?.state?.from || "/Dashboard");
+        setError("");
+       
         // history.push(location?.state?.from || "/dashboard")
       })
       .catch((error) => {
@@ -40,17 +40,18 @@ const auth = getAuth();
       // .finally(() => setIsLoading(false));
   };
 
+  //Observer
   useEffect(()=>{
     onAuthStateChanged(auth, (user) => {
+        setIsLoading(true);
         if (user) {
-          // User is signed in, see docs for a list of available properties
-          // https://firebase.google.com/docs/reference/js/firebase.User
          setUser(user);
           // ...
         } else {
           // User is signed out
-          // ...
+          setUser({});
         }
+        setIsLoading(false);
       });
   },[auth])
 
@@ -66,7 +67,7 @@ const auth = getAuth();
     });
   }
 
-  return {googleSignIn,user,userLogout};
+  return {googleSignIn,user,userLogout,language,setLanguage,isLoading};
 
   }
   export default useFirebase;

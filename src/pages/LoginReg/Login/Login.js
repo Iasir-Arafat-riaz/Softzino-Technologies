@@ -1,9 +1,10 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useFirebase from '../../customHooks/useFirebase';
+import useContextAuth from '../../customHooks/useContextAuth';
+
 
 const Login = () => {
-    const {googleSignIn}=useFirebase()
+    const {googleSignIn}=useContextAuth()
     const navigate= useNavigate()
     const location=useLocation()
     return (
