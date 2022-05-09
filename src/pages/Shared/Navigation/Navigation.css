@@ -1,0 +1,9 @@
+.navigation a{
+ text-decoration: none;
+ margin-right: 10px;
+ color: aliceblue;
+}
+#com{
+    margin-right: 50px;
+    color: rgb(233, 141, 233);
+}
