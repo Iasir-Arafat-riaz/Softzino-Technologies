@@ -17,6 +17,7 @@ import UsersPage from './pages/Dashboard/UsersPage/UsersPage';
 import Products from './pages/Dashboard/Products/Products';
 import Register from './pages/LoginReg/Register/Register';
 import Footer from './pages/Shared/Footer/Footer';
+import AddProduct from './pages/Dashboard/AddProduct/AddProduct';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardDefault/>}/>
         <Route path="usersPage" element={<UsersPage/>}/>
         <Route path="products" element={<Products/>}/>
+        <Route path="addNewProduct" element={<AddProduct/>}/>
       </Route>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>

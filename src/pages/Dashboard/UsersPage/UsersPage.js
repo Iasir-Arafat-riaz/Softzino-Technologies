@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
+import Loader from "../../Shared/Loader/Loader";
 
 const UsersPage = () => {
   const [users, setUsers] = useState([]);
+  const [load, setLoad]=useState(true)
   useEffect(() => {
+    setLoad(true)
     fetch("https://protected-anchorage-52714.herokuapp.com/users")
       .then((res) => res.json())
-      .then((data) => setUsers(data));
+      .then((data) => {
+        setUsers(data)
+        setLoad(false)
+      });
   }, []);
+  if(load){
+      return (<Loader/>)
+  }
   return (
     <div>
       <h2 className="pt-3">All Registered users here</h2>
