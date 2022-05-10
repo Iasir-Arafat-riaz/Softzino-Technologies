@@ -3,16 +3,19 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Loader from "../../Shared/Loader/Loader";
 
 const UpdateProduct = () => {
   const [update, setUpdate] = useState({});
-
+  const [load, setLoad]=useState(true)
   const { idx } = useParams();
   useEffect(() => {
+      setLoad(true)
     fetch(`https://protected-anchorage-52714.herokuapp.com/products/${idx}`)
       .then((res) => res.json())
       .then((data) => {
         setUpdate(data);
+        setLoad(false)
       });
   }, []);
   const {id,model,company,price,detail1,detail4,image}=update;
@@ -37,10 +40,15 @@ const UpdateProduct = () => {
 });
 
   };
+  if(load){
+    return (<Loader/>)
+  }
+
+
   return (
     <div>
       <h1>UpdateProduct</h1>
-      {id ? <div className="add-product pt-5">
+      <div className="add-product pt-5">
         {/* <h1 className="text-danger">AddProduct</h1> */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
@@ -98,7 +106,7 @@ const UpdateProduct = () => {
 
           <input className="bg-success" type="submit" value="Update" />
         </form>
-      </div>:""}
+      </div>
     </div>
   );
 };
