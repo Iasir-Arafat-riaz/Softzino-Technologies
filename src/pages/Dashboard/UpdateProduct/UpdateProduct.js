@@ -1,27 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import "./AddProduct.css"
-const AddProduct = () => {
+import { useParams } from 'react-router-dom';
+
+const UpdateProduct = () => {
     const { register, handleSubmit, reset } = useForm();
+
+    const {id}=useParams()
+    useEffect(() => {
+        
+        fetch(`http://localhost:5000/products/${id}`)
+          .then((res) => res.json())
+          .then((data) => {
+           console.log(data);
+          });
+          
+      }, []);
   const onSubmit = (data) => {
     // console.log(image);
     console.log(data);
    
 
-    axios
-      .post("https://protected-anchorage-52714.herokuapp.com/products", data)
-      .then((res) => {
-        console.log(res.status);
-        if (res.status === 200) {
-          Swal.fire("New Product successfully added");
-          reset();
-        }
-      });
+    // axios
+    //   .post("https://protected-anchorage-52714.herokuapp.com/products", data)
+    //   .then((res) => {
+    //     console.log(res.status);
+    //     if (res.status === 200) {
+    //       Swal.fire("New Product successfully added");
+    //       reset();
+    //     }
+    //   });
   };
     return (
-        <div id="add" className="add-product pt-5">
+        <div>
+            <h1>UpdateProduct</h1>
+            <div className="add-product pt-5">
             {/* <h1 className="text-danger">AddProduct</h1> */}
             <form onSubmit={handleSubmit(onSubmit)}>
         <input
@@ -64,10 +78,11 @@ const AddProduct = () => {
           {...register("image")}
         />
 
-        <input className="bg-success" type="submit" value="ADD" />
+        <input className="bg-success" type="submit" value="Update" />
       </form>
+        </div>
         </div>
     );
 };
 
-export default AddProduct;
+export default UpdateProduct;

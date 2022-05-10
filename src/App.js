@@ -18,6 +18,7 @@ import Products from './pages/Dashboard/Products/Products';
 import Register from './pages/LoginReg/Register/Register';
 import Footer from './pages/Shared/Footer/Footer';
 import AddProduct from './pages/Dashboard/AddProduct/AddProduct';
+import UpdateProduct from './pages/Dashboard/UpdateProduct/UpdateProduct';
 
 function App() {
   return (
@@ -33,7 +34,9 @@ function App() {
         <Route path="usersPage" element={<UsersPage/>}/>
         <Route path="products" element={<Products/>}/>
         <Route path="addNewProduct" element={<AddProduct/>}/>
+        
       </Route>
+      <Route path="/updateProduct/:id" element={<UpdateProduct/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path ="*" element={<NotFound/>}/>

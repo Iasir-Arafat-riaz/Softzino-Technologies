@@ -22,7 +22,7 @@ const Products = () => {
   const [load, setLoad] = useState(true);
   useEffect(() => {
     setLoad(true);
-    fetch("http://localhost:5000/products")
+    fetch("https://protected-anchorage-52714.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
@@ -38,7 +38,7 @@ if(load){
       <h1>Products</h1>
       <CardGroup className="row">
         {products.map((product) => (
-          <Product {...product} />
+          <Product key={product._id} {...product} />
         ))}
       </CardGroup>
     </div>
