@@ -24,10 +24,9 @@ const useFirebase = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         setUser(result.user);
-
-        // console.log(result.user.displayName);
+        const user =result.user
         //SAVE USER FUNCTION CALL
-        // saveUser(user.email,user.displayName,"put")
+        saveUser(user.email,user.displayName,"put")
         navigate(location?.state?.from || "/Dashboard");
         setError("");
 
@@ -80,6 +79,8 @@ const useFirebase = () => {
             // Profile updated!
             setSuccess("Your Profile Create Successfully")
             setError("")
+            //save use to database
+        saveUser(email,displayName,"post")
             const destination =location?.state?.from ||"/dashboard"
             navigate(destination)
             // ...
@@ -124,6 +125,21 @@ const useFirebase = () => {
         // An error happened.
       });
   };
+
+
+
+  const saveUser=(email,displayName,method)=>{
+
+    const user ={email,displayName}
+    fetch("http://localhost:5000/users",
+    {method:method,
+  headers:{"content-type":"application/json"},
+  body: JSON.stringify(user)
+  })
+  .then(res=>res.json())
+  .then(data=>console.log(data))
+
+  }
 
   return {
     googleSignIn,
