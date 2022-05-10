@@ -4,7 +4,7 @@ import { Table } from "react-bootstrap";
 const UsersPage = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://protected-anchorage-52714.herokuapp.com/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
@@ -22,7 +22,7 @@ const UsersPage = () => {
         </thead>
         <tbody>
          {
-             users.map((user,index)=> <tr>
+             users.map((user,index)=> <tr key={user._id}>
            
                 <td>{index+1}</td>
                 <td>{user.displayName}</td>
