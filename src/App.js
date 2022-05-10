@@ -36,7 +36,7 @@ function App() {
         <Route path="addNewProduct" element={<AddProduct/>}/>
         
       </Route>
-      <Route path="/updateProduct/:id" element={<UpdateProduct/>}/>
+      <Route path="/updateProduct/:idx" element={<UpdateProduct/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path ="*" element={<NotFound/>}/>
