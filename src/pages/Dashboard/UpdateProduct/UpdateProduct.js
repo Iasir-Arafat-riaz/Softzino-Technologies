@@ -43,7 +43,9 @@ const UpdateProduct = () => {
   if(load){
     return (<Loader/>)
   }
+const handleChange=(e)=>{
 
+}
 
   return (
     <div>
@@ -58,6 +60,7 @@ const UpdateProduct = () => {
             type="number"
             {...register("id")}
             value={id}
+            onChange={handleChange}
           />
           <input
           

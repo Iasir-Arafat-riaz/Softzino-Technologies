@@ -18,7 +18,7 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [language, setLanguage] = useState("english");
+  const [language, setLanguage] = useState("English");
   const googleSignIn = (navigate, location) => {
     // setIsLoading(true);
     signInWithPopup(auth, provider)

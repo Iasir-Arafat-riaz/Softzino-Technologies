@@ -15,4 +15,5 @@
 
 6. In product page, show all the products from server. he can also create update and delete products form the list. ------>Completed 
 
-7. It contains a drop-down in sidebar area to translate the application in at least two languages. ------>Not-Completed 
+7. It contains a drop-down in sidebar area to translate the application in at least two languages. ------>
+overall Completed 
